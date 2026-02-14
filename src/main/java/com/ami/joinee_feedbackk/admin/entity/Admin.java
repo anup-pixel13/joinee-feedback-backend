@@ -31,8 +31,8 @@ public class Admin {
 	@JsonProperty("id")
 	private Long id;
 	
-	@Column(name = "userName")
-	@JsonProperty("userName")
+	@Column(name = "user_name")	
+    @JsonProperty("userName")
 	private String userName;
 	
 	@Column(name = "password")
