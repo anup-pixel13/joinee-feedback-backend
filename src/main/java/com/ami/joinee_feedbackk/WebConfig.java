@@ -13,12 +13,17 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**") // Apply to all endpoints
-                        .allowedOrigins("http://localhost:3000") // Allow React dev server
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD") // Allow common methods including OPTIONS
-                        .allowedHeaders("*") // Allow all headers
-                        .exposedHeaders("*") // Expose all headers
-                        .allowCredentials(true) // Allow credentials
-                        .maxAge(3600); // Cache preflight response for 1 hour
+                        .allowedOrigins(
+                            "http://localhost:3000",  // Local dev (removed comma typo)
+                            "http://localhost:5173",  // Vite dev server
+                            "http://localhost:4173",  // Vite preview
+                            "https://joinee-feedback.vercel.app"  // ✅ Your Vercel URL
+                        )
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD")
+                        .allowedHeaders("*")
+                        .exposedHeaders("*")
+                        .allowCredentials(true)
+                        .maxAge(3600);
             }
         };
     }
